@@ -1,0 +1,404 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    left: 50%;
+    width: 80vw;
+    transform: translateX(-50%);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 600px;
+    gap: 100px;
+    z-index: 2;
+}
+
+header img {
+    width: 250px;
+}
+
+header nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+}
+
+/* SECTION */
+section {
+    background-image: radial-gradient(#7f3d9e, #6d00d9);
+    height: 100vh;
+    position: relative;
+}
+
+section .list {
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    --calculation: 1;
+}
+
+section .item {
+    position: absolute;
+    inset: 0;
+    transform: translateX(calc(100vw * var(--calculation)));
+    transition: 0.5s;
+    opacity: 0;
+}
+
+/* ATIVO */
+section .item.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* IMAGEM */
+.car-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70%;
+}
+
+.car-img img {
+    width: 100%;
+    transform: rotate(-30deg);
+    transition: 0.5s;
+}
+
+.item.active .car-img img {
+    transform: rotate(-20deg);
+}
+
+.car-img::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 40px;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    filter: blur(25px);
+}
+
+/* CONTEÚDO */
+.content {
+    position: absolute;
+    right: 100px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+}
+
+.car-information {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 8em;
+    line-height: 1em;
+    font-family: "League Gothic", sans-serif;
+}
+
+.description {
+    color: #d9d9d9;
+    font-size: 12px;
+    text-align: right;
+    max-width: 400px;
+}
+
+.information {
+    border-radius: 30px;
+    height: 35px;
+    width: 120px;
+    text-transform: uppercase;
+    border: 2px solid #791fd3;
+    background-color: #beff1b;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "League Gothic", sans-serif;
+}
+
+/* LINHA */
+section::before {
+    content: '';
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    top: 50%;
+  
+}
+
+/* SETAS */
+.arrows {
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrows button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.arrows button img {
+    width: 30px;
+}
+
+.arrows button:hover {
+    background-color: #beff1b;
+}
+
+.arrows button:first-child img {
+    transform: scale(-1);
+}
+
+/* INDICADORES */
+.indicators {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 200px;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+
+.indicators .number {
+    font-size: 5em;
+    font-family: "League Gothic", sans-serif;
+}
+
+.indicators ul {
+    display: flex;
+    gap: 10px;
+}
+
+.indicators li {
+    width: 50px;
+    height: 5px;
+    background-color: #beff1b;
+    border-radius: 5px;
+}
+
+.indicators .active {
+    background-color: #fff;
+}
+
+/* ================= RESPONSIVIDADE TOTAL ================= */
+
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+        width: 100%;
+        padding: 15px 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    header img {
+        width: 150px;
+    }
+
+    header nav ul {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    /* SECTION */
+    section {
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    section .list {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    /* ITEM */
+    section .item {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 140px 20px 120px;
+
+        opacity: 0;
+        transform: translateX(100%);
+        transition: 0.5s;
+    }
+
+    section .item.active {
+        opacity: 1;
+        transform: translateX(0);
+        z-index: 1;
+    }
+
+    /* IMAGEM */
+    .car-img {
+        position: relative;
+        width: 100%;
+        max-width: 280px;
+
+        top: 0;
+        transform: none;
+
+        margin-bottom: 20px;
+    }
+
+    .car-img img {
+        width: 100%;
+        transform: rotate(0deg) !important;
+    }
+
+    .car-img::before {
+        display: none;
+    }
+
+    /* CONTEÚDO */
+    .content {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        right: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 12px;
+
+        text-align: center;
+    }
+
+    .car-information {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 60px;
+        line-height: 0.9;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+
+        text-align: center;
+
+        max-width: 100%;
+    }
+
+    .information {
+        width: 120px;
+        height: auto;
+        font-size: 13px;
+    }
+
+    /* SETAS */
+    .arrows {
+    
+    width: 100%;
+    padding: 0 20px;
+
+    position: absolute;
+
+    top: 42%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+}
+    
+
+   .arrows button {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrows button img {
+    width: 22px;
+}
+
+    /* INDICADORES */
+    .indicators {
+        position: absolute;
+
+        bottom: 20px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        width: 100%;
+
+        height: auto;
+
+        align-items: center;
+    }
+
+    .indicators .number {
+        font-size: 40px;
+      
+    }
+
+    .indicators ul {
+        justify-content: center;
+    }
+}
